@@ -9,7 +9,7 @@ public class task_11_11 {
 		int[] dimenArray = new int[20];
 		Random random = new Random(System.nanoTime());
 		for (int i = 0; i < dimenArray.length; ++i) {
-			int compareA = (random.nextInt(100)*(i+1));
+			int compareA = (random.nextInt(10)*(i+1));
 					dimenArray[i] = compareA;
 					System.out.print(dimenArray[i] + "; ");
 				}

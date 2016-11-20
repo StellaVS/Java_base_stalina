@@ -30,41 +30,41 @@ public class task_chess_3_34 {
 			}
 			if (a == c || b == d) {
 				System.out.println(
-						"а) На поле (" + a + " " + b + ") расположена ладья, угрожает полю " + "(" + c + " " + d + ")");
+						"а) Если на поле (" + a + " " + b + ") расположена ладья, угрожает полю " + "(" + c + " " + d + ")");
 			}
 			if (positionFigure == positionMotion) {
 				System.out.println(
-						"б) На поле (" + a + " " + b + ") расположен слон, угрожает полю " + "(" + c + " " + d + ")");
+						"б) Если на поле (" + a + " " + b + ") расположен слон, угрожает полю " + "(" + c + " " + d + ")");
 			}
 			if ((positionFigure + positionMotion == 1)
 					|| (positionFigure + positionMotion == 2 && positionFigure == 1 && positionMotion == 1)) {
-				System.out.println("в) На поле (" + a + " " + b
+				System.out.println("в) Если на поле (" + a + " " + b
 						+ ") расположен король он может одним ходом попасть на поле " + "(" + c + " " + d + ")");
 			}
 			if (a == c || b == d || positionFigure == positionMotion) {
 				System.out.println(
-						"г) На поле (" + a + " " + b + ") расположен ферзь, угрожает полю " + "(" + c + " " + d + ")");
+						"г) Если на поле (" + a + " " + b + ") расположен ферзь, угрожает полю " + "(" + c + " " + d + ")");
 			}
 			if (b == startPosWhitePawns && a == c) {
-				System.out.println("д.1) На поле (" + a + " " + b
+				System.out.println("д.1) Если на поле (" + a + " " + b
 						+ ") расположена белая пешка, она может одним ходом попасть на поле " + "(" + c + " " + d + ")");
 			}
 			if (pawVarCourse == 1) {
-				System.out.println("д.2) На поле (" + a + " " + b
+				System.out.println("д.2) Если на поле (" + a + " " + b
 						+ ") расположена белая пешка, она бьет фигуру или пешку соперника " + "(" + c + " " + d + ")");
 			}
 			if (b == startPosBlackPawns && a == c) {
-				System.out.println("е.1) На поле (" + a + " " + b
+				System.out.println("е.1) Если на поле (" + a + " " + b
 						+ ") расположена черная пешка, она может одним ходом попасть на поле " + "(" + c + " " + d + ")");
 			}
 			if (pawVarCourse == -1) {
-				System.out.println("е.2) На поле (" + a + " " + b
+				System.out.println("е.2) Если на поле (" + a + " " + b
 						+ ") расположена черная пешка, она бьет фигуру или пешку соперника " + "(" + c + " " + d + ")");
 			}
 
 			if (positionFigure != 0 && positionMotion != 0 && positionFigure + positionMotion == 3) {
 				System.out.println(
-						"ж) На поле (" + a + " " + b + ") расположен конь, угрожает полю " + "(" + c + " " + d + ")");
+						"ж) Если на поле (" + a + " " + b + ") расположен конь, угрожает полю " + "(" + c + " " + d + ")");
 			}
 	}
 

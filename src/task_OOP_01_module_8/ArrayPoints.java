@@ -10,14 +10,14 @@ package task_OOP_01_module_8;
 public class ArrayPoints {
 
 	public static void main(String[] args) {
-		final int g = 1;
-		final int f = 10;
+		final int minValueRand = 1;
+		final int maxValueRand = 10;
 		Point[] point = new Point[4];
 
-		point[0] = new Point("One", coordinateGenerator(g, f), coordinateGenerator(g, f));
-		point[1] = new Point("Two", coordinateGenerator(g, f), coordinateGenerator(g, f));
-		point[2] = new Point("Three", coordinateGenerator(g, f), coordinateGenerator(g, f));
-		point[3] = new Point("Four", coordinateGenerator(g, f), coordinateGenerator(g, f));
+		point[0] = new Point("One", coordinateGenerator(minValueRand, maxValueRand), coordinateGenerator(minValueRand, maxValueRand));
+		point[1] = new Point();
+		point[2] = new Point("Three", coordinateGenerator(minValueRand, maxValueRand), coordinateGenerator(minValueRand, maxValueRand));
+		point[3] = new Point("Four", coordinateGenerator(minValueRand, maxValueRand), coordinateGenerator(minValueRand, maxValueRand));
 
 		bubbleSortCoordinate(point);
 		printArrayPoints(point);

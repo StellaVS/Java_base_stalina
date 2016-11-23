@@ -5,7 +5,7 @@ public class Point {
 	int xCoordinate;
 	int yCoordinate;
 	public Point() {
-		
+		pointName="defaultNamePoint";
 	}
 	public Point(String Name, int x, int y) {
 		pointName = Name;

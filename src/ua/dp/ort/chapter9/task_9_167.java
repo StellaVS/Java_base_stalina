@@ -5,7 +5,7 @@ public class task_9_167 {
 	// привет.
 	public static void main(String[] args) {
 		String hi = "Привет";
-		StringBuffer strigOfWords = new StringBuffer("Как много в этом слове Привет.И добродушие,и свет.");
+		StringBuilder strigOfWords = new StringBuilder("Как много в этом слове Привет.И добродушие,и свет.");
 		strigOfWords.delete(strigOfWords.indexOf(hi), strigOfWords.indexOf(hi) + hi.length());
 		System.out.println(strigOfWords);
 	}

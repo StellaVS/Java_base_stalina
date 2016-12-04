@@ -1,4 +1,4 @@
-package dp.ort.ua.task_OOP_03_module_8;
+package dp.ort.ua.task_OOP_04_module_String;
 
 public class ImplementString {
 	private char[] symbols;

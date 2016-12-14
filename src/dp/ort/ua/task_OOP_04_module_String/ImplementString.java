@@ -1,14 +1,15 @@
 package dp.ort.ua.task_OOP_04_module_String;
 
 public class ImplementString {
-	private char[] symbols;
+	private char[] _symbols;
 
 	public ImplementString(char[] symbol) {
-		symbols = symbol;
+		_symbols = new char[symbol.length];
+		copyArr(symbol);
 	}
 
 	public ImplementString(String userStr) {
-		this.symbols = userStr.toCharArray();
+		this._symbols = userStr.toCharArray();
 	}
 
 	/**
@@ -18,21 +19,21 @@ public class ImplementString {
 	 */
 
 	public int lenght() {
-		return symbols.length;
+		return _symbols.length;
 	}
 
 	/**
 	 * add to the end string symbol from user
 	 * 
-	 * @param userSymbols
+	 * @param userSymbol
 	 */
-	public void appendChar(char userSymbols) {
-		char[] arrSymbols = new char[this.symbols.length + 1];
-		for (int i = 0; i < this.symbols.length; ++i) {
-			arrSymbols[i] = this.symbols[i];
+	public void appendChar(char userSymbol) {
+		char[] arrSymbols = new char[this._symbols.length + 1];
+		for (int i = 0; i < this._symbols.length; ++i) {
+			arrSymbols[i] = this._symbols[i];
 		}
-		arrSymbols[this.symbols.length] = userSymbols;
-		this.symbols = arrSymbols;
+		arrSymbols[this._symbols.length] = userSymbol;
+		this._symbols = arrSymbols;
 	}
 
 	/**
@@ -40,8 +41,11 @@ public class ImplementString {
 	 * 
 	 * @return
 	 */
+
 	public char[] toCharArray() {
-		return symbols;
+		char copySymbols[] = new char[_symbols.length];
+		System.arraycopy(_symbols, 0, copySymbols, 0, _symbols.length);
+		return copySymbols;
 	}
 
 	/**
@@ -52,12 +56,12 @@ public class ImplementString {
 	 */
 	public ImplementString concat(ImplementString str) {
 		char[] strArr = str.toCharArray();
-		char[] copySymbols = new char[str.lenght() + symbols.length];
+		char[] copySymbols = new char[str.lenght() + _symbols.length];
 
-		for (int i = 0; i < this.symbols.length; ++i) {
-			copySymbols[i] = this.symbols[i];
+		for (int i = 0; i < this._symbols.length; ++i) {
+			copySymbols[i] = this._symbols[i];
 		}
-		for (int i = symbols.length; i < copySymbols.length; ++i) {
+		for (int i = _symbols.length; i < copySymbols.length; ++i) {
 			copySymbols[i] = strArr[i - strArr.length];
 		}
 		return new ImplementString(copySymbols);
@@ -72,8 +76,8 @@ public class ImplementString {
 	 */
 	public int firstIndexOf(char symbol) {
 
-		for (int i = 0; i < symbols.length; ++i) {
-			if (symbols[i] == symbol)
+		for (int i = 0; i < _symbols.length; ++i) {
+			if (_symbols[i] == symbol)
 				return i + 1;
 		}
 		return -1;
@@ -86,11 +90,17 @@ public class ImplementString {
 	 * @return
 	 */
 	public int lastIndexOf(char symbol) {
-		for (int i = symbols.length - 1; i >= 0; --i) {
-			if (symbols[i] == symbol)
+		for (int i = _symbols.length - 1; i >= 0; --i) {
+			if (_symbols[i] == symbol)
 				return i + 1;
 		}
 		return -1;
+	}
+
+	private void copyArr(char[] array) {
+		for (int i = 0; i < array.length; i++) {
+			_symbols[i] = array[i];
+		}
 	}
 
 	/**
@@ -98,6 +108,6 @@ public class ImplementString {
 	 */
 	@Override
 	public String toString() {
-		return new String(symbols);
+		return new String(_symbols);
 	}
 }

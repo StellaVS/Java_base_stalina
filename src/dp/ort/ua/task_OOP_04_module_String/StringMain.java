@@ -5,6 +5,7 @@ package dp.ort.ua.task_OOP_04_module_String;
 Реализовать для него простейшие операции: 
 создание, возврат длины, сложение строк, далее на ваш выбор.
 */
+
 public class StringMain {
 	public static void main(String[] args) {
 		ImplementString stringOne = new ImplementString("123456");

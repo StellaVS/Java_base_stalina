@@ -7,7 +7,6 @@ public class Student {
 	private String _groupNumber;
 	private final int _sizeBook = 5;
 	private int[] _examMarks;
-	private int _marksCounter;
 	private int _percentStipend;
 	private int exCounter = 0;
 	private int goodCounter = 0;
@@ -21,7 +20,7 @@ public class Student {
 		setSurname(surname);
 		setPatronymic(patronymic);
 		setGroupNumber(groupNumber);
-		setMarks(examMarks);
+		setExamMarks(examMarks);
 	}
 
 	public String getName() {
@@ -61,8 +60,15 @@ public class Student {
 	}
 
 	public void setExamMarks(int[] examMarks) {
-		_examMarks = examMarks;
-	}
+		_examMarks = new int[_sizeBook];
+		if (examMarks.length <= _sizeBook) {
+		for (int i = 0; i < examMarks.length; i++) {
+			_examMarks[i] = examMarks[i];
+						}
+		} else if(examMarks.length>_sizeBook)
+				System.out.println("Все оценки выставлены для студента" + getSurname() +" " + getName());
+					}
+	
 
 	public int getPercentStipend() {
 		return _percentStipend;
@@ -72,24 +78,16 @@ public class Student {
 		_percentStipend = percentStipend;
 	}
 
-	public void setMarks(int[] examMarks) {
-		if (_marksCounter < _sizeBook) {
-			setExamMarks(examMarks);
-			_marksCounter++;
-		} else
-			System.out.println("Все оценки выставлены " + getSurname() + getPatronymic());
-	}
-
 	public int Percent(int[] Marks) {
 		if (Marks.length < 3) {
 			System.out.println("Оценок не достаточно для расчета стипендии");
 		} else {
 			for (int i = 0; i < Marks.length; ++i) {
-				if (Marks[i] == SystemMarks.getExcelent()) {
+				if (Marks[i] == SystemMarks.EXCELENT) {
 					exCounter++;
-				} else if (Marks[i] == SystemMarks.getGood()) {
+				} else if (Marks[i] == SystemMarks.GOOD) {
 					goodCounter++;
-				} else if (Marks[i] == SystemMarks.getTernary()) {
+				} else if (Marks[i] == SystemMarks.TERNARY) {
 					ternCounter++;
 				}
 			}

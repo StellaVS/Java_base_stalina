@@ -13,7 +13,7 @@ public class Student_main {
 	public static void main(String[] args) {
 		Student[] student = new Student[5];
 		student[0] = new Student("Kuzya", "Sidorov", "Petrovich", "G12564", new int[] { 5, 5, 5, 5 });
-		student[1] = new Student("Ivan", "Petrov", "Petrovich", "G12564", new int[] { 4, 5, 5 });
+		student[1] = new Student("Ivan", "Petrov", "Petrovich", "G12564", new int[] { 4, 5, 5,3 });
 		student[2] = new Student("Petr", "Kozlov", "Petrovich", "T12564", new int[] { 4, 4, 4, 3, 5 });
 		student[3] = new Student("Yana", "Frolova", "Petrovich", "G12564", new int[] { 4, 4, 4, 4, 4 });
 		student[4] = new Student("Dasha", "Ivanova", "Petrovich", "T12564", new int[] { 4, 5, 4, 4, 5 });

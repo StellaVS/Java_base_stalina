@@ -60,7 +60,7 @@ public class Student {
 	}
 
 	public void setExamMarks(int[] examMarks) {
-		_examMarks = new int[_sizeBook];
+		_examMarks = new int[examMarks.length];
 		if (examMarks.length <= _sizeBook) {
 			for (int i = 0; i < examMarks.length; i++) {
 				_examMarks[i] = examMarks[i];
@@ -79,7 +79,7 @@ public class Student {
 
 	public int Percent(int[] Marks) {
 		if (Marks.length < 3) {
-			System.out.println("Оценок не достаточно для расчета стипендии");
+			System.out.println("Оценок не достаточно для расчета стипендии " + getSurname() + "_" + getName());
 		} else {
 			for (int i = 0; i < Marks.length; ++i) {
 				if (Marks[i] == SystemMarks.EXCELENT) {
@@ -98,10 +98,7 @@ public class Student {
 			} else if (ternCounter == 0) {
 				setPercentStipend(50);
 			}
-
 		}
 		return getPercentStipend();
-
 	}
-
 }

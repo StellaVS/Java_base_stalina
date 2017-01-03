@@ -1,5 +1,6 @@
 package dp.ort.ua.OOP_02;
 //2.Составить программу для начисления стипендии студентам по результатам экзаменационной сессии. Информация о результатах сессии включает в себя:
+
 //– фамилию;
 //– имя;
 //– отчество;
@@ -13,7 +14,7 @@ public class Student_main {
 	public static void main(String[] args) {
 		Student[] student = new Student[5];
 		student[0] = new Student("Kuzya", "Sidorov", "Petrovich", "G12564", new int[] { 5, 5, 5, 5 });
-		student[1] = new Student("Ivan", "Petrov", "Petrovich", "G12564", new int[] { 4, 5, 5,3 });
+		student[1] = new Student("Ivan", "Petrov", "Petrovich", "G12564", new int[] { 4, 5, 5, 5 });
 		student[2] = new Student("Petr", "Kozlov", "Petrovich", "T12564", new int[] { 4, 4, 4, 3, 5 });
 		student[3] = new Student("Yana", "Frolova", "Petrovich", "G12564", new int[] { 4, 4, 4, 4, 4 });
 		student[4] = new Student("Dasha", "Ivanova", "Petrovich", "T12564", new int[] { 4, 5, 4, 4, 5 });
@@ -36,7 +37,7 @@ public class Student_main {
 
 	private static String toStringStudent(Student student) {
 		StringBuilder sb = new StringBuilder();
-			sb.append(student.getSurname()).append(" ").append(student.getName()).append(" ")
+		sb.append(student.getSurname()).append(" ").append(student.getName()).append(" ")
 				.append(student.getPatronymic()).append(" ").append(student.getGroupNumber()).append(" - ")
 				.append(student.Percent(student.getExamMarks())).append(" %");
 		return sb.toString();
@@ -44,7 +45,7 @@ public class Student_main {
 
 	private static void printStudents(Student[] student) {
 		for (int i = 0; i < student.length; ++i) {
-	
+
 			String studentList = toStringStudent(student[i]);
 			System.out.println(studentList);
 		}

@@ -62,13 +62,12 @@ public class Student {
 	public void setExamMarks(int[] examMarks) {
 		_examMarks = new int[_sizeBook];
 		if (examMarks.length <= _sizeBook) {
-		for (int i = 0; i < examMarks.length; i++) {
-			_examMarks[i] = examMarks[i];
-						}
-		} else if(examMarks.length>_sizeBook)
-				System.out.println("Все оценки выставлены для студента" + getSurname() +" " + getName());
-					}
-	
+			for (int i = 0; i < examMarks.length; i++) {
+				_examMarks[i] = examMarks[i];
+			}
+		} else if (examMarks.length > _sizeBook)
+			System.out.println("Все оценки выставлены для студента" + getSurname() + "_" + getName());
+	}
 
 	public int getPercentStipend() {
 		return _percentStipend;

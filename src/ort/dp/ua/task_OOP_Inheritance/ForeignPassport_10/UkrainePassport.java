@@ -1,4 +1,4 @@
-package ort.dp.ua.task_OOP_Inharitance.ForeignPassport_10;
+package ort.dp.ua.task_OOP_Inheritance.ForeignPassport_10;
 
 import java.util.Date;
 

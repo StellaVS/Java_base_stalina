@@ -1,6 +1,5 @@
 package ort.dp.ua.task_OOP_Inheritance.ForeignPassport_10;
 
-import java.util.Date;
 
 /**
  * @author Stalina
@@ -11,9 +10,9 @@ public class UkrainePassport {
 	private String _lastName;
 	private String _birthday;
 	private String _serialNumber;
-	private Date _dateOfIssue;
+	private String _dateOfIssue;
 
-	public UkrainePassport(String firstName, String lastName, String birthday, String serialNumber, Date dateOfIssue) {
+	public UkrainePassport(String firstName, String lastName, String birthday, String serialNumber, String dateOfIssue) {
 		super();
 		_firstName = firstName;
 		_lastName = lastName;
@@ -22,12 +21,14 @@ public class UkrainePassport {
 		_dateOfIssue = dateOfIssue;
 	}
 
+
 	@Override
 	public String toString() {
 		return "UkrainePassport [_firstName=" + _firstName + ", _lastName=" + _lastName + ", _birthday=" + _birthday
-				+ ", _serialNumber=" + _serialNumber + ", _dateOfIssue=" + _dateOfIssue + ", getClass()=" + getClass()
-				+ ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
+				+ ", _serialNumber=" + _serialNumber + ", _dateOfIssue=" + _dateOfIssue + "]";
 	}
+
+
 	public String getFirstName() {
 		return _firstName;
 	}
@@ -60,11 +61,11 @@ public class UkrainePassport {
 		_serialNumber = serialNumber;
 	}
 	
-	public Date getDateOfIssue() {
+	public String getDateOfIssue() {
 		return _dateOfIssue;
 	}
 	
-	public void setDateOfIssue(Date dateOfIssue) {
+	public void setDateOfIssue(String dateOfIssue) {
 		_dateOfIssue = dateOfIssue;
 	}
 	

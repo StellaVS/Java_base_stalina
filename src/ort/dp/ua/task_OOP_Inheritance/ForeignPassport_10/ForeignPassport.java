@@ -1,31 +1,37 @@
 package ort.dp.ua.task_OOP_Inheritance.ForeignPassport_10;
 
-import java.util.Date;
+import java.util.Arrays;
 
 public class ForeignPassport extends UkrainePassport {
 
-	private Visa _visas;
+	private Visa[] _visas = new Visa[20];
+	private int _visaCounter = 0;
 
-	public ForeignPassport(String firstName, String lastName, String birthday, String serialNumber, Date dateOfIssue,
-			Visa visa) {
+	public ForeignPassport(String firstName, String lastName, String birthday, String serialNumber,
+			String dateOfIssue) {
 		super(firstName, lastName, birthday, serialNumber, dateOfIssue);
-		setVisas(visa);
 
 	}
 
-	public Visa getVisas() {
-		return _visas;
+	public void addVisa(Visa visa) {
+		if (_visaCounter < _visas.length) {
+			_visas[_visaCounter++] = visa;
+		} else {
+			System.err.printf("У гражданина %s %s " + "нет места для визы %n", getFirstName(), getLastName());
+		}
 	}
 
-	public void setVisas(Visa visas) {
-		_visas = visas;
+	public Visa[] getVisas() {
+		Visa[] result = new Visa[_visaCounter];
+		System.arraycopy(_visas, 0, result, 0, _visaCounter);
+		return result;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "ForeignPassport [_visas=" + _visas + ", getVisas()=" + getVisas() + ", toString()=" + super.toString()
-		+ ", getFirstName()=" + getFirstName() + ", getLastName()=" + getLastName() + ", getBirthday()="
-		+ getBirthday() + ", getSerialNumber()=" + getSerialNumber() + ", getDateOfIssue()=" + getDateOfIssue()
-		+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + "]";
+		return "ForeignPassport [getVisas()="+ Arrays.toString(getVisas()) + ", \ngetFirstName()=" + getFirstName()
+				+ ", \ngetLastName()=" + getLastName() + ", \ngetBirthday()=" + getBirthday() + ", \ngetSerialNumber()="
+				+ getSerialNumber() + ", \ngetDateOfIssue()=" + getDateOfIssue() + "]";
 	}
+
 }

@@ -36,10 +36,20 @@ abstract class Employee implements Comparable<Employee> {
 		_rate = rate;
 	}
 
+	/**
+	 * Abstract method for calculating the average monthly wage is implemented
+	 * in each heir super class
+	 * 
+	 * @return
+	 */
 	abstract int calcAvgMonthlySalary();
 
+	/**
+	 * Arrange the entire sequence of workers descending the average monthly
+	 * wage. At concurrence of salary - to organize data by name alphabetically.
+	 */
 	@Override
-	public int compareTo (Employee obj) {
+	public int compareTo(Employee obj) {
 		Employee result = (Employee) obj;
 		if (this.calcAvgMonthlySalary() < result.calcAvgMonthlySalary()) {
 			return 1;

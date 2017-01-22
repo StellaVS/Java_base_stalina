@@ -6,6 +6,9 @@ public class EmployeeFixedRate extends Employee {
 		super(name, rate, persNumber);
 	}
 
+	/**
+	 * The calculation of the average monthly wage for salaried worker
+	 */
 	@Override
 	int calcAvgMonthlySalary() {
 

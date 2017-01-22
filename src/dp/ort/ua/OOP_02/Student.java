@@ -77,7 +77,7 @@ public class Student {
 		_percentStipend = percentStipend;
 	}
 
-	public int Percent(int[] Marks) {
+	public int percent(int[] Marks) {
 		if (Marks.length < 3) {
 			System.out.println("Оценок не достаточно для расчета стипендии " + getSurname() + "_" + getName());
 		} else {
@@ -101,4 +101,17 @@ public class Student {
 		}
 		return getPercentStipend();
 	}
+
+	
+	public static String toStringStudent(Student student) {
+		StringBuilder sb = new StringBuilder();
+		sb.append(student.getSurname()).append(" ").append(student.getName()).append(" ")
+				.append(student.getPatronymic()).append(" ").append(student.getGroupNumber()).append(" - ")
+				.append(student.percent(student.getExamMarks())).append(" %");
+		return sb.toString();
+	}
+
+
 }
+
+

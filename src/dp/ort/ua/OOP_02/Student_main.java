@@ -20,28 +20,28 @@ public class Student_main {
 		student[4] = new Student("Dasha", "Ivanova", "Petrovich", "T12564", new int[] { 4, 5, 4, 4, 5 });
 		sortStudent(student);
 		printStudents(student);
-		
+
 	}
 
-public static void sortStudent(Student[] students) {
-	for (int i = students.length - 1; i > 0; --i) {
-		for (int j = 0; j < i; ++j) {
-			if (students[j].getSurname().charAt(0) > students[j + 1].getSurname().charAt(0)) {
+	public static void sortStudent(Student[] students) {
+		for (int i = students.length - 1; i > 0; --i) {
+			for (int j = 0; j < i; ++j) {
+				if (students[j].getSurname().charAt(0) > students[j + 1].getSurname().charAt(0)) {
 
-				Student temp = students[j];
-				students[j] = students[j + 1];
-				students[j + 1] = temp;
+					Student temp = students[j];
+					students[j] = students[j + 1];
+					students[j + 1] = temp;
+				}
 			}
 		}
 	}
-}
-public static void printStudents(Student[] student) {
-	for (int i = 0; i < student.length; ++i) {
 
-		String studentList = Student.toStringStudent(student[i]);
-		System.out.println(studentList);
+	public static void printStudents(Student[] student) {
+		for (int i = 0; i < student.length; ++i) {
+
+			String studentList = Student.toStringStudent(student[i]);
+			System.out.println(studentList);
+		}
+
 	}
-
-}}
-
-
+}

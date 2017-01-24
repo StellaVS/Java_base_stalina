@@ -11,7 +11,7 @@ public class PassportMain {
 		passFor.addVisa(v[0]);
 		passFor.addVisa(v[2]);
 		passFor.addVisa(v[1]);
-
+		//System.err.printf("У гражданина %s %s " + "нет места для визы %n", getFirstName(), getLastName());
 		System.out.println(passFor.toString());
 	}
 

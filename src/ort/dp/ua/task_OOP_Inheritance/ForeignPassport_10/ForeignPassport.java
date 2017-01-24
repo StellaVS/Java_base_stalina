@@ -13,12 +13,12 @@ public class ForeignPassport extends UkrainePassport {
 
 	}
 
-	public void addVisa(Visa visa) {
+	public boolean addVisa(Visa visa) {
 		if (_visaCounter < _visas.length) {
 			_visas[_visaCounter++] = visa;
-		} else {
-			System.err.printf("У гражданина %s %s " + "нет места для визы %n", getFirstName(), getLastName());
+			return true;
 		}
+		return false;
 	}
 
 	public Visa[] getVisas() {
@@ -29,7 +29,7 @@ public class ForeignPassport extends UkrainePassport {
 
 	@Override
 	public String toString() {
-		return "ForeignPassport [getVisas()="+ Arrays.toString(getVisas()) + ", \ngetFirstName()=" + getFirstName()
+		return "ForeignPassport [getVisas()=" + Arrays.toString(getVisas()) + ", \ngetFirstName()=" + getFirstName()
 				+ ", \ngetLastName()=" + getLastName() + ", \ngetBirthday()=" + getBirthday() + ", \ngetSerialNumber()="
 				+ getSerialNumber() + ", \ngetDateOfIssue()=" + getDateOfIssue() + "]";
 	}

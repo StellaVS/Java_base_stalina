@@ -1,26 +1,24 @@
 package ort.dp.ua.task_OOP_Inheritance.ForeignPassport_10;
 
-
 public class Visa {
 
-	private String _typeVisa;
+	private String _type;
 	private String _dateOpen;
 	private String _dateClose;
 
+	public Visa(String type, String dateOpen, String dateClose) {
 
-	public Visa(String typeVisa, String dateOpen, String dateClose) {
-		
-		_typeVisa = typeVisa;
-		_dateOpen = dateOpen;
-		_dateClose = dateClose;
+		setTypeVisa(type);
+		setDateOpen(dateOpen);
+		setDateClose(dateClose);
 	}
 
 	public String getTypeVisa() {
-		return _typeVisa;
+		return _type;
 	}
 
-	public void setTypeVisa(String typeVisa) {
-		_typeVisa = typeVisa;
+	public void setTypeVisa(String type) {
+		_type = type;
 	}
 
 	public String getDateOpen() {
@@ -41,6 +39,6 @@ public class Visa {
 
 	@Override
 	public String toString() {
-		return "\nVisa [_typeVisa=" + _typeVisa + ", _dateOpen=" + _dateOpen + ", _dateClose=" + _dateClose + "]";
+		return "\nVisa [_type=" + _type + ", _dateOpen=" + _dateOpen + ", _dateClose=" + _dateClose + "]";
 	}
 }

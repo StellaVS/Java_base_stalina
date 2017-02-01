@@ -19,6 +19,7 @@ public class SimpleCalculatorService implements CalculatorService {
 		MAIN_MATH_OPERATIONS.put("+", 2);
 		MAIN_MATH_OPERATIONS.put("-", 2);
 	}
+	
 	private boolean isNumber(String token) {
 				Double.parseDouble(token);
 

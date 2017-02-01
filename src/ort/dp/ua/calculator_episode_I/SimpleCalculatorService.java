@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.StringTokenizer;
 
 public class SimpleCalculatorService implements CalculatorService {
-	public static final Map<String, Integer> MAIN_MATH_OPERATIONS;
+	public static final Map<String, Integer> OPERATIONS;
 	public static final String SEPARATOR = ",";
 
 	public SimpleCalculatorService() {
@@ -13,11 +13,11 @@ public class SimpleCalculatorService implements CalculatorService {
 	}
 
 	static {
-		MAIN_MATH_OPERATIONS = new HashMap<String, Integer>();
-		MAIN_MATH_OPERATIONS.put("*", 1);
-		MAIN_MATH_OPERATIONS.put("/", 1);
-		MAIN_MATH_OPERATIONS.put("+", 2);
-		MAIN_MATH_OPERATIONS.put("-", 2);
+		OPERATIONS = new HashMap<String, Integer>();
+		OPERATIONS.put("*", 1);
+		OPERATIONS.put("/", 1);
+		OPERATIONS.put("+", 2);
+		OPERATIONS.put("-", 2);
 	}
 	
 	private boolean isNumber(String token) {
@@ -27,9 +27,9 @@ public class SimpleCalculatorService implements CalculatorService {
 	}
 
 	private Integer isFunction(String token) {
-		for (Map.Entry<String, Integer> entry : MAIN_MATH_OPERATIONS.entrySet()) {
-		if (token.equals(MAIN_MATH_OPERATIONS))
-			return MAIN_MATH_OPERATIONS.get(token);	
+		for (Map.Entry<String, Integer> entry : OPERATIONS.entrySet()) {
+		if (token.equals(OPERATIONS))
+			return OPERATIONS.get(token);	
 		
 	}return null;
 		}
@@ -46,7 +46,7 @@ public class SimpleCalculatorService implements CalculatorService {
 	}
 
 	private boolean isOperator(String token) {
-		return MAIN_MATH_OPERATIONS.keySet().contains(token);
+		return OPERATIONS.keySet().contains(token);
 	}
 
 	private byte getPrecedence(String token) {
@@ -65,7 +65,7 @@ public class SimpleCalculatorService implements CalculatorService {
 			expression = "0" + expression;
 		}
 		// splitting input string into tokens
-		StringTokenizer stringTokenizer = new StringTokenizer(expression, MAIN_MATH_OPERATIONS + SEPARATOR + "()",
+		StringTokenizer stringTokenizer = new StringTokenizer(expression, OPERATIONS + SEPARATOR + "()",
 				true);
 		
 		

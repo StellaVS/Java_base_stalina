@@ -1,12 +1,14 @@
 package ort.dp.ua.calculator_episode_I;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
-import java.util.StringTokenizer;
+import java.util.Stack;
 
 public class SimpleCalculatorService implements CalculatorService {
 	public static final Map<String, Integer> OPERATIONS;
-	public static final String SEPARATOR = ",";
+	public static final char SEPARATOR = ',';
 
 	public SimpleCalculatorService() {
 
@@ -19,56 +21,99 @@ public class SimpleCalculatorService implements CalculatorService {
 		OPERATIONS.put("+", 2);
 		OPERATIONS.put("-", 2);
 	}
-	
-	private boolean isNumber(String token) {
-				Double.parseDouble(token);
 
-				return true;
+	private boolean isNumber(String elementFromExpression) {
+		Double.parseDouble(elementFromExpression);
+		return true;
 	}
 
-	private Integer isFunction(String token) {
+	private Integer isFunction(String elementFromExpression) {
 		for (Map.Entry<String, Integer> entry : OPERATIONS.entrySet()) {
-		if (token.equals(OPERATIONS))
-			return OPERATIONS.get(token);	
-		
-	}return null;
+			if (elementFromExpression.equals(OPERATIONS))
+				return OPERATIONS.get(elementFromExpression);
+
 		}
-	private boolean isSeparator(String token) {
-		return token.equals(SEPARATOR);
+		return null;
 	}
 
-	private boolean isOpenBracket(String token) {
-		return token.equals("(");
+	private static boolean isSeparator(char elementFromExpression) {
+		return elementFromExpression == SEPARATOR;
 	}
 
-	private boolean isCloseBracket(String token) {
-		return token.equals(")");
+	private static boolean isOpenBracket(char elementFromExpression) {
+		return elementFromExpression == '(';
 	}
 
-	private boolean isOperator(String token) {
-		return OPERATIONS.keySet().contains(token);
+	private static boolean isCloseBracket(char elementFromExpression) {
+		return elementFromExpression == ')';
 	}
 
-	private byte getPrecedence(String token) {
-		if (token.equals("+") || token.equals("-")) {
-			return 1;
-		}
-		return 2;
+	private static boolean isOperator(char elementFromExpression) {
+		return OPERATIONS.keySet().contains(elementFromExpression);
 	}
-	public void parserExp(String expression) {
 
-		/**
-		 * prepeare expression, delete surplus
-		 */
+	/**
+	 * method delete all surplus element from string
+	 */
+	public static String prepareExp(String expression) {
 		expression = expression.replace(" ", "").replace("(-", "(0-").replace(",-", ",0-");
 		if (expression.charAt(0) == '-') {
 			expression = "0" + expression;
 		}
-		// splitting input string into tokens
-		StringTokenizer stringTokenizer = new StringTokenizer(expression, OPERATIONS + SEPARATOR + "()",
-				true);
-		
-		
+		return expression;
+	}
+
+	static BigDecimal processOperator(LinkedList<BigDecimal> st, char op) {
+		Stack<BigDecimal> stack = new Stack<BigDecimal>();
+		BigDecimal operand2 = stack.pop();
+		BigDecimal operand1 = stack.empty() ? BigDecimal.ZERO : stack.pop();
+		if (op == '*') {
+			stack.push(operand1.multiply(operand2));
+		} else if (op == '/') {
+			stack.push(operand1.divide(operand2));
+		} else if (op == '+') {
+			stack.push(operand1.add(operand2));
+		} else if (op == '-') {
+			stack.push(operand1.subtract(operand2));
+		}
+
+		if (stack.size() != 1)
+			throw new IllegalArgumentException("Expression syntax error.");
+		return stack.pop();
+
+	}
+
+	public static BigDecimal calculation(String expression) {
+		prepareExp(expression);
+		LinkedList<BigDecimal> st = new LinkedList<BigDecimal>();
+		LinkedList<Character> operators = new LinkedList<Character>();
+		for (int i = 0; i < expression.length(); i++) {
+			char elementFromExpression = expression.charAt(i);
+			if (isSeparator(elementFromExpression))
+				continue;
+			if (isOpenBracket(elementFromExpression))
+				operators.add(elementFromExpression);
+			else if (isCloseBracket(elementFromExpression)) {
+				while (operators.getLast() != '(')
+					processOperator(st, operators.removeLast());
+				operators.removeLast();
+			} else if (isOperator(elementFromExpression)) {
+				while (!operators.isEmpty()
+						&& OPERATIONS.get(operators.getLast()) >= OPERATIONS.get(elementFromExpression))
+					;
+				processOperator(st, operators.removeLast());
+				operators.add(elementFromExpression);
+			} else {
+				String operand = "";
+				while (i < expression.length() && Character.isDigit(expression.charAt(i)))
+					operand += expression.charAt(i++);
+				--i;
+				st.add(Integer.parseInt(operand), null);
+			}
+		}
+		while (!operators.isEmpty())
+			processOperator(st, operators.removeLast());
+		return st.get(0);
 	}
 
 }

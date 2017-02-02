@@ -1,5 +1,9 @@
 package ort.dp.ua.calculator_episode_I;
 
-public interface CalculatorService {
+import java.math.BigDecimal;
 
-}
+public interface CalculatorService {
+	public static void calculation(){}
+
+	}
+

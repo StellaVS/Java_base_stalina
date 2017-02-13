@@ -1,4 +1,4 @@
-package ua.dp.ort.chapter9;
+package dp.ort.ua.chapter9;
 
 public class task_9_163 {
 //	9.163. Даны три слова. Напечатать неповторяющиеся в них буквы.

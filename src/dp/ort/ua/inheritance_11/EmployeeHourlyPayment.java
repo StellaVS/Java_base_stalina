@@ -1,4 +1,4 @@
-package ort.dp.ua.inheritance_11;
+package dp.ort.ua.inheritance_11;
 
 public class EmployeeHourlyPayment extends Employee {
 

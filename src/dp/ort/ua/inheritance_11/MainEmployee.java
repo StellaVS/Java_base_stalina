@@ -1,4 +1,4 @@
-package ort.dp.ua.inheritance_11;
+package dp.ort.ua.inheritance_11;
 
 import java.util.Arrays;
 

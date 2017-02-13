@@ -1,4 +1,4 @@
-package ort.dp.ua.inheritance_11;
+package dp.ort.ua.inheritance_11;
 
 abstract class Employee implements Comparable<Employee> {
 	private String _name;

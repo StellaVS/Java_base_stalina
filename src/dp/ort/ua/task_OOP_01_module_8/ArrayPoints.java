@@ -1,4 +1,4 @@
-package task_OOP_01_module_8;
+package dp.ort.ua.task_OOP_01_module_8;
 
 /**
  * 1.Дан массив точек. Каждая точка характеризуется координатами х, у и

@@ -13,7 +13,9 @@ public class SimpleCalculatorService implements CalculatorService {
 	public SimpleCalculatorService() {
 
 	}
-
+/**
+ * Prioryty of operations
+ */
 	static {
 		OPERATIONS = new HashMap<String, Integer>();
 		OPERATIONS.put("*", 1);

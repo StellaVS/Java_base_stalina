@@ -1,5 +1,7 @@
 package dp.ort.ua.OOP_02;
 
+import java.util.Arrays;
+
 public class Student {
 	private String _name;
 	private String _surname;
@@ -65,8 +67,8 @@ public class Student {
 			for (int i = 0; i < examMarks.length; i++) {
 				_examMarks[i] = examMarks[i];
 			}
-		} else if (examMarks.length > _sizeBook)
-			System.out.println("Все оценки выставлены для студента" + getSurname() + "_" + getName());
+		} else return;
+		
 	}
 
 	public int getPercentStipend() {
@@ -79,7 +81,7 @@ public class Student {
 
 	public int percent(int[] Marks) {
 		if (Marks.length < 3) {
-			System.out.println("Оценок не достаточно для расчета стипендии " + getSurname() + "_" + getName());
+			return 0;
 		} else {
 			for (int i = 0; i < Marks.length; ++i) {
 				if (Marks[i] == SystemMarks.EXCELENT) {
@@ -102,16 +104,10 @@ public class Student {
 		return getPercentStipend();
 	}
 
-	
-	public static String toStringStudent(Student student) {
-		StringBuilder sb = new StringBuilder();
-		sb.append(student.getSurname()).append(" ").append(student.getName()).append(" ")
-				.append(student.getPatronymic()).append(" ").append(student.getGroupNumber()).append(" - ")
-				.append(student.percent(student.getExamMarks())).append(" %");
-		return sb.toString();
+	@Override
+	public String toString() {
+		return "Student [" + getName() + "," + getSurname() + "," + getPatronymic() + "," + getGroupNumber() + ","
+				+ Arrays.toString(getExamMarks()) + "," + percent(getExamMarks()) + "%" + "]";
 	}
 
-
 }
-
-

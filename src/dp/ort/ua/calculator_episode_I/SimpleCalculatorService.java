@@ -1,41 +1,23 @@
-package ort.dp.ua.calculator_episode_I;
+package dp.ort.ua.calculator_episode_I;
 
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
-import java.util.Stack;
+
 
 public class SimpleCalculatorService implements CalculatorService {
-	public static final Map<String, Integer> OPERATIONS;
-	public static final char SEPARATOR = ',';
+	public static final Map<Character, Integer> OPERATIONS;
+	public static final char SEPARATOR = '.';
 
-	public SimpleCalculatorService() {
-
-	}
-/**
- * Prioryty of operations
- */
+	/**
+	 * Prioryty of operations
+	 */
 	static {
-		OPERATIONS = new HashMap<String, Integer>();
-		OPERATIONS.put("*", 1);
-		OPERATIONS.put("/", 1);
-		OPERATIONS.put("+", 2);
-		OPERATIONS.put("-", 2);
-	}
-
-	private boolean isNumber(String elementFromExpression) {
-		Double.parseDouble(elementFromExpression);
-		return true;
-	}
-
-	private Integer isFunction(String elementFromExpression) {
-		for (Map.Entry<String, Integer> entry : OPERATIONS.entrySet()) {
-			if (elementFromExpression.equals(OPERATIONS))
-				return OPERATIONS.get(elementFromExpression);
-
-		}
-		return null;
+		OPERATIONS = new HashMap<Character, Integer>();
+		OPERATIONS.put('*', 1);
+		OPERATIONS.put('/', 1);
+		OPERATIONS.put('+', 2);
+		OPERATIONS.put('-', 2);
 	}
 
 	private static boolean isSeparator(char elementFromExpression) {
@@ -51,7 +33,9 @@ public class SimpleCalculatorService implements CalculatorService {
 	}
 
 	private static boolean isOperator(char elementFromExpression) {
+		System.out.println("operator " + OPERATIONS.keySet().contains(elementFromExpression));
 		return OPERATIONS.keySet().contains(elementFromExpression);
+
 	}
 
 	/**
@@ -65,29 +49,37 @@ public class SimpleCalculatorService implements CalculatorService {
 		return expression;
 	}
 
-	static BigDecimal processOperator(LinkedList<BigDecimal> st, char op) {
-		Stack<BigDecimal> stack = new Stack<BigDecimal>();
-		BigDecimal operand2 = stack.pop();
-		BigDecimal operand1 = stack.empty() ? BigDecimal.ZERO : stack.pop();
-		if (op == '*') {
-			stack.push(operand1.multiply(operand2));
-		} else if (op == '/') {
-			stack.push(operand1.divide(operand2));
-		} else if (op == '+') {
-			stack.push(operand1.add(operand2));
-		} else if (op == '-') {
-			stack.push(operand1.subtract(operand2));
+	/**
+	 * 
+	 * @param st
+	 * @param operator
+	 * @return
+	 */
+	static Double calculateProc(LinkedList<Double> stack, char operator) {
+		Double secondOperand = stack.removeLast();
+		Double firstOperand = stack.removeLast();
+
+		System.out.println(firstOperand);
+		System.out.println(secondOperand);
+		if (operator == '*') {
+			stack.add(firstOperand * secondOperand);
+		} else if (operator == '/') {
+			stack.add(firstOperand / secondOperand);
+		} else if (operator == '+') {
+			stack.add(firstOperand + secondOperand);
+		} else if (operator == '-') {
+			stack.add(firstOperand - secondOperand);
 		}
 
 		if (stack.size() != 1)
 			throw new IllegalArgumentException("Expression syntax error.");
-		return stack.pop();
+		return stack.removeFirst();
 
 	}
 
-	public static BigDecimal calculation(String expression) {
+	public static Double calculation(String expression) {
 		prepareExp(expression);
-		LinkedList<BigDecimal> st = new LinkedList<BigDecimal>();
+		LinkedList<Double> operandFromExp = new LinkedList<Double>();
 		LinkedList<Character> operators = new LinkedList<Character>();
 		for (int i = 0; i < expression.length(); i++) {
 			char elementFromExpression = expression.charAt(i);
@@ -97,25 +89,24 @@ public class SimpleCalculatorService implements CalculatorService {
 				operators.add(elementFromExpression);
 			else if (isCloseBracket(elementFromExpression)) {
 				while (operators.getLast() != '(')
-					processOperator(st, operators.removeLast());
+					calculateProc(operandFromExp, operators.removeLast());
 				operators.removeLast();
 			} else if (isOperator(elementFromExpression)) {
 				while (!operators.isEmpty()
 						&& OPERATIONS.get(operators.getLast()) >= OPERATIONS.get(elementFromExpression))
-					;
-				processOperator(st, operators.removeLast());
+					calculateProc(operandFromExp, operators.removeLast());
 				operators.add(elementFromExpression);
 			} else {
 				String operand = "";
 				while (i < expression.length() && Character.isDigit(expression.charAt(i)))
 					operand += expression.charAt(i++);
 				--i;
-				st.add(Integer.parseInt(operand), null);
+				operandFromExp.add((double) Integer.parseInt(operand));
 			}
 		}
 		while (!operators.isEmpty())
-			processOperator(st, operators.removeLast());
-		return st.get(0);
+		calculateProc(operandFromExp, operators.removeLast());
+		return operandFromExp.get(0);
 	}
 
 }

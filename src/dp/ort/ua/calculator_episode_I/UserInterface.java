@@ -1,4 +1,4 @@
-package ort.dp.ua.calculator_episode_I;
+package dp.ort.ua.calculator_episode_I;
 
 public interface UserInterface {
 	

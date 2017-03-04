@@ -1,9 +1,8 @@
-package ort.dp.ua.calculator_episode_I;
-
-import java.math.BigDecimal;
+package dp.ort.ua.calculator_episode_I;
 
 public interface CalculatorService {
-	public static void calculation(String exp){}
-
+	public static double calculation (double exp){
+		return exp;
+		}
 	}
 

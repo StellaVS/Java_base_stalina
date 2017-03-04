@@ -1,9 +1,15 @@
-package ort.dp.ua.calculator_episode_I;
+package dp.ort.ua.calculator_episode_I;
 
 public class RunCalculator {
 
 	public static void main(String[] args) {
-		run();
-		String exp = "7+(5*2*8)";
-		   System.out.println();
-}}
+
+		ConsoleUserInterface calc = new ConsoleUserInterface();
+		try {
+			calc.run();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println("Fiasco");
+	}
+}
